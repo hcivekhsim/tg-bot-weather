@@ -25,7 +25,7 @@ func (o OpenWeatherClient) Coordinates(city string) (Coordinates, error) {
 	}
 	if resp.StatusCode != 200 {
 		return Coordinates{}, fmt.Errorf("error fail get coordinates: %d", resp.StatusCode)
-	}
+	}	
 
 	var coordinatesResponse []CoordinatesResponse
 	err = json.NewDecoder(resp.Body).Decode(&coordinatesResponse)
@@ -41,7 +41,7 @@ func (o OpenWeatherClient) Coordinates(city string) (Coordinates, error) {
 		Lat: coordinatesResponse[0].Lat,
 		Lon: coordinatesResponse[0].Lon,
 	}, nil
-
+		
 }
 
 func (o OpenWeatherClient) Weather(lat, lon float64) (Weather, error) {
